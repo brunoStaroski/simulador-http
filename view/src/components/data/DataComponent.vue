@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" readonly="readonly"/>
+    <input type="text" readonly="readonly" :value="headers" />
 
 
   </div>
@@ -8,7 +8,10 @@
 
 <script>
 export default {
-  name: "DataComponent"
+  name: "DataComponent",
+  props: [
+      'headers'
+  ]
 }
 </script>
 

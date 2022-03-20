@@ -8,7 +8,10 @@
 
 <script>
 export default {
-  name: "ResponseComponent"
+  name: "ResponseComponent",
+  props: [
+      'response'
+  ]
 }
 </script>
 

@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express(), bodyParser = require("body-parser");
 const port = 3080;
-import { JsonDB } from 'node-json-db';
-import { Config } from 'node-json-db/dist/lib/JsonDBConfig'
-
-let db = new JsonDB(new Config("./db.json", true, false, '/'));
-
+const JSONdb = require('simple-json-db');
+const db = new JSONdb('./db/db.json');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -17,7 +14,7 @@ app.use(bodyParser.json());
 
 app.get('/executar-get', async (req, res) => {
     try {
-        return res.json(db.getData("/"));
+        return res.json(db.get('teste'));
     } catch (e) {
         return res.json(e);
     }
