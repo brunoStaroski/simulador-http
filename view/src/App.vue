@@ -18,7 +18,7 @@
     </div>
   </div>
   <data-component :headers="headerRequest"></data-component>
-  <response-component></response-component>
+  <response-component :response="responseBody"></response-component>
 </template>
 
 <script>
@@ -30,6 +30,7 @@ const api = 'http://localhost:3080';
 
 export default {
   name: 'App',
+
   components: {
     DataComponent,
     ResponseComponent
@@ -41,30 +42,26 @@ export default {
       responseBody: ''
     }
   },
-  /*props: [
-    'headerRequest',
-    'headerResponse',
-    'responseBody'
-  ],*/
-
-  setup() {
-
+  methods: {
+    async executeGet() {
+      axios.get(`${api}/executar-get`)
+          .then(
+              res => {
+                this.responseBody = res.data;
+                this.headerResponse = res.headers;
+              },
+              err => console.log(err)
+          );
+      axios.interceptors.request.use( (request) => {
+          if (request) {
+            console.log('object: ' + request);
+            console.log('json string: ' + JSON.stringify(request));
+            this.headerRequest = JSON.stringify(request); //"\t"
+        }
+      }, null, {synchronous: true});
+    },
   },
 
-  methods: {
-    executeGet() {
-      axios.get(`${api}/executar-get`)
-          .then(res => this.responseBody = res.data, err => console.log(err));
-
-      axios.interceptors.request.use(request => {
-        console.log(request);
-        this.headerRequest = JSON.stringify(request);
-      })
-
-    }
-
-
-  }
 }
 </script>
 
@@ -81,6 +78,7 @@ export default {
   #request table {
     border: 1px solid black;
     width: 30%;
+    height: 180px;
   }
 
   #request button {

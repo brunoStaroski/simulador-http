@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" readonly="readonly"/>
+    <input type="text" readonly="readonly" :value="response"/>
 
 
   </div>
