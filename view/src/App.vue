@@ -47,37 +47,41 @@ export default {
 
     async executeGet() {
       this.limparCampos();
-       axios.get(`${api}/executar-get`).then(
-                res => {
-                  this.responseBody = res.data;
-                  this.headerResponse = JSON.stringify(res.headers);
-                },
-                err => console.log(err)
-            );
-      //TODO
-      axios.interceptors.request.use(
-          async (request) => {
-            return request;
-          },
-          (err) => {
-            return err;
-          })
+      await axios.get(`${api}/executar-get`).then(
+              res => {
+                console.log(res.request);
+                //TODO
+                this.headerRequest = JSON.stringify(request);
+                this.responseBody = res.data;
+                this.headerResponse = JSON.stringify(res.headers);
+              },
+              err => {
+                console.log(err)
+                this.headerRequest = JSON.stringify(err);
+              }
+      );
     },
 
     async executarPost() {
       this.limparCampos();
       axios.post(`${api}/executar-post`, {dado: 'POST'}).then(
           res => {
+            //TODO
+            this.headerRequest = JSON.stringify(res.request);
             this.responseBody = res.data;
             this.headerResponse = JSON.stringify(res.headers);
           },
-          err => console.log(err)
+          err => {
+            console.log(err)
+            this.headerRequest = JSON.stringify(err);
+          }
       );
       //TODO
     }
   }
 
 }
+//TODO
 </script>
 
 <style>

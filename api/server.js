@@ -23,7 +23,6 @@ app.get('/executar-get', async (req, res) => {
 
 app.post('/executar-post', async (req, res) => {
     try {
-        console.log(req.body);
         db.set(req.body.dado, req.body.dado);
         return res.json('POST executado com sucesso');
     } catch (e) {
