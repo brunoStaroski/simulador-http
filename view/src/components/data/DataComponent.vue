@@ -3,7 +3,7 @@
     <p>Request Header</p>
     <pre>{{ formatRequestHeader }}</pre>
   </div>
-  <div class="header">
+  <div class="header responseHeader">
     <p>Response Header</p>
     <pre>{{ formatResponseHeader }}</pre>
   </div>
@@ -39,18 +39,25 @@ export default {
 
 <style scoped>
   .header {
-    width: 30%;
-    height: 180px;
-    position: relative;
-    align-self: center;
-    left: 350px;
+    width: 37%;
     border: 1px solid black;
+    position: relative;
+    left: 31%;
+    text-align: center;
+    font-size: 18px;
+    height: 280px;
+  }
+
+  .header p {
+    font-size: 20px;
   }
 
   .requestHeader {
-    position: relative;
-    bottom: 160px;
-    left: 600px;
+    bottom: 96.5%;
+  }
+
+  .responseHeader {
+    bottom: 94%;
   }
 
   p {
@@ -58,13 +65,13 @@ export default {
   }
 
   pre {
-    height: auto;
-    max-height: 180px;
+    max-height: 205px;
     overflow: auto;
     word-break: normal !important;
     word-wrap: normal !important;
     white-space: pre !important;
+    padding: 3px;
+    text-align: center;
   }
-
 
 </style>

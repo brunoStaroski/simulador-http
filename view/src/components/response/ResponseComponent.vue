@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <input type="text" readonly="readonly" :value="response"/>
-  </div>
+    <input type="text" readonly="readonly" :value="response" class="responseBody"/>
 </template>
 
 <script>
@@ -14,11 +12,11 @@ export default {
 </script>
 
 <style scoped>
-  input {
+  .responseBody {
     width: 30%;
-    height: 155px;
+    height: 580px;
     position: relative;
-    bottom: 320px;
+    bottom: 190.5%;
     float: right;
   }
 </style>
